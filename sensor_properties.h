@@ -20,6 +20,7 @@ typedef enum sensor_mq {
 typedef enum measure_gas_type {
   MEASURE_CH4_E = 0x01,
   MEASURE_LPG_E = 0x02,
+  MEASURE_CO_E  = 0x03,
   
 } measure_gas_type_e;
 
@@ -27,8 +28,10 @@ typedef enum measure_gas_type {
 /* ========== STRUCTs ============ */
 typedef struct sensor_properties {
   char name[SENSOR_NAME_LENGTH];
-  int graph_dots_num;
+  int graph_dots_num;                            // get these dots from Datasheet graph
   graph_dots_t graph_ch4_dots[MAX_GRAPH_DOTS];
+  graph_dots_t graph_lpg_dots[MAX_GRAPH_DOTS];
+  graph_dots_t graph_co_dots[MAX_GRAPH_DOTS];   
   float sensor_air_ratio;
   float sensor_rl_resistance;
 

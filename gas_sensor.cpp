@@ -10,7 +10,8 @@ rc_t gas_sensor::gas_sensor_init(sensor_mq_e sensor_type) {
   validate_rc(rc, "sensor_properties_init");
 
   rc = this->gas_sensor_define_attr_value();
-
+  validate_rc(rc, "gas_sensor_define_attr_value");
+  
   return rc;
 }
 

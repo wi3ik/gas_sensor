@@ -32,7 +32,6 @@ void blink(float n) {
   
   if (cur_millis - prev_millis >= interval) {
     led_state = (led_state == HIGH) ? LOW : HIGH;
-    //led_state ^= led_state;
     digitalWrite(LED_BUILTIN, led_state);
     prev_millis = millis();
   }
