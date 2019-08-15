@@ -19,6 +19,8 @@
 #define MQ_PIN A0
 #define OPERATIONAL_VOLTAGE (5.0)
 #define MAX_ADC_VALUE       (1024)    // == (1 << 10) - in this case 10 represents MAX number bits for ADC 
+
+
 /* ========== ENUMs ============ */
 typedef enum rc {
   RC_SUCCESS_E = 0,
@@ -36,5 +38,7 @@ typedef struct graph_dots {
 void validate_rc(rc_t rc, char *func_name);
 
 char * rc2str(rc_t rc);
+
+bool is_time_expired(float period, unsigned long &prev_time);
 
 #endif /* __COMMON_H__ */

@@ -31,3 +31,17 @@ char * rc2str(rc_t rc) {
   }
   return "N/A";
 }
+
+
+bool is_time_expired(float period, unsigned long &prev_time) {
+  float interval = period * 1000;
+  bool res = false;
+  unsigned long cur_time = millis();
+  if ((cur_time - prev_time) >= interval) {
+    res = true;
+
+    // update prev_time value
+    prev_time = millis();
+  }
+  return res;
+}
