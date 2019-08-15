@@ -36,9 +36,7 @@ typedef struct graph_dots {
 
 /* ========== FUNCTIONs ============ */
 void validate_rc(rc_t rc, char *func_name);
-
-char * rc2str(rc_t rc);
-
+char *rc2str(rc_t rc);
 bool is_time_expired(float period, unsigned long &prev_time);
 
 #endif /* __COMMON_H__ */

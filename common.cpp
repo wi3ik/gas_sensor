@@ -10,7 +10,7 @@ void validate_rc(rc_t rc, char *func_name) {
 }
 
 
-char * rc2str(rc_t rc) {
+char *rc2str(rc_t rc) {
   
   switch (rc) {
    
