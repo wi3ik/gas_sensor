@@ -40,4 +40,5 @@ void loop() {
 - buzzer
 - MQ5
 - CO 
+- init all class attributes in constructor
 */
