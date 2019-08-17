@@ -108,6 +108,10 @@ rc_t gas_sensor::gas_sensor_define_m_and_b_values(measure_gas_type_e gas_type) {
       cur_dots = this->params.graph_lpg_dots;    
       break;
 
+    case MEASURE_GAS_CO_E:
+      cur_dots = this->params.graph_co_dots;    
+      break;
+
     default:
       Serial.printf("\nError: gas_type: %d [%s] is not supported!\n", gas_type, gas2str(gas_type));
       rc = RC_UNSUPPORTED;

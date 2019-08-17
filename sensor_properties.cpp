@@ -33,6 +33,19 @@ rc_t sensor_properties_init(sensor_mq_e sensor_type, sensor_properties_t *prop_p
   };
 
 
+  sensor_properties_t mq7 {
+    // Datasheet link - https://www.terraelectronica.ru/pdf/show?pdf_file=%252Fds%252Fpdf%252FM%252FMQ-7.pdf
+    1,
+    {MEASURE_GAS_CO_E},                    // supported gases
+    5,
+    {},                                                               // CH4 is not supported by MQ7 - leave it empty
+    {},                                                               // LPG is not supported by MQ7 - leave it empty
+    {{50, 1.75}, {100, 1.0}, {400, 0.4}, {1000, 0.21}, {4000, 0.09}}, // CO
+    28.4,                                                             // sensor ration for clear Air (per Datasheet graph)
+    10.0,                                                             // RL resistance value, kOhm
+  };
+
+
   switch (sensor_type) {
     
     case SENSOR_MQ4_E:
@@ -42,7 +55,11 @@ rc_t sensor_properties_init(sensor_mq_e sensor_type, sensor_properties_t *prop_p
     case SENSOR_MQ5_E:
       memcpy(prop_p, &mq5, sizeof(sensor_properties_t));  
     break;
-    
+
+    case SENSOR_MQ7_E:
+      memcpy(prop_p, &mq7, sizeof(sensor_properties_t));  
+    break;
+ 
     default:
       rc = RC_UNSUPPORTED;
     break;
