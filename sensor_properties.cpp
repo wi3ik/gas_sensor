@@ -31,7 +31,10 @@ rc_t sensor_properties_init(sensor_mq_e sensor_type, sensor_properties_t *prop_p
       rc = RC_UNSUPPORTED;
     break;
   }
-  
+
+  if (rc != RC_SUCCESS_E) {
+    Serial.printf("Error: Failed to initialize \"%s\" sensor parameters. rc = %s.\n", sensor_type2str(sensor_type), rc2str(rc));
+  }
   
   return rc;
 }
@@ -53,7 +56,39 @@ char *gas2str(measure_gas_type_e gas_type) {
     break;
     
     default:
-      return "N/A"; 
+      return "Unknown"; 
   }
   return "N/A"; 
+}
+
+char *sensor_type2str(sensor_mq_e sensort_type) {
+  switch (sensort_type) {
+    case SENSOR_MQ2_E:
+      return "MQ2";
+    break;
+    
+    case SENSOR_MQ3_E:
+      return "MQ3";
+    break;
+
+    case SENSOR_MQ4_E:
+      return "MQ4";
+    break;
+    
+    case SENSOR_MQ5_E:
+      return "MQ5";
+    break;
+
+    case SENSOR_MQ6_E:
+      return "MQ6";
+    break;
+
+    case SENSOR_MQ7_E:
+      return "MQ7";
+    break;
+    
+    default:
+      return "Unknown";    
+  }
+  return "N/A";
 }

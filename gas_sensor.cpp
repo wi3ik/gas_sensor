@@ -10,11 +10,17 @@ rc_t gas_sensor::gas_sensor_init() {
   rc_t rc = RC_SUCCESS_E;
 
   rc = sensor_properties_init(this->sensor_type, &this->params);
-  validate_rc(rc, "sensor_properties_init");
+  if (rc != RC_SUCCESS_E) {
+    Serial.printf("Error: Failed to initialize \"%s\" sensort type, rc = %d [%s].\n", sensor_type2str(this->sensor_type), rc, rc2str(rc));
+    return rc;
+  }  
 
   rc = this->gas_sensor_define_attr_value();
-  validate_rc(rc, "gas_sensor_define_attr_value");
-  
+  if (rc != RC_SUCCESS_E) {
+    Serial.printf("Error: Failed to calculate \"%s\" sensort attributes, rc = %d [%s].\n", sensor_type2str(this->sensor_type), rc, rc2str(rc));
+    return rc;
+  }
+
   return rc;
 }
 
@@ -32,6 +38,9 @@ float gas_sensor::gas_sensor_value_get(measure_gas_type_e gas_type) {
   return ppm;
 }
 
+sensor_mq_e gas_sensor::sensor_type_get() {
+  return this->sensor_type;
+}
 
 float gas_sensor::gas_sensor_analog_value_get(int iterations) {
   float raw_value = 0;
@@ -131,7 +140,10 @@ rc_t gas_sensor::gas_sensor_define_attr_value() {
   /* in this loop we will go over all supported gas types and calculate appropriate m and b value */
   for (int i = 0; i < this->params.gas_types_support_num; i++) {
     rc = this->gas_sensor_define_m_and_b_values(this->params.supported_gases[i]); 
-    validate_rc(rc, "gas_sensor_define_m_and_b_values");
+    if (rc != RC_SUCCESS_E) {
+      Serial.printf("Error: Failed to define \"%s\" sensort attributes \"m\" and \"b\", rc = %d [%s].\n", sensor_type2str(this->sensor_type), rc, rc2str(rc));
+      return rc;
+    }  
         
   }
   

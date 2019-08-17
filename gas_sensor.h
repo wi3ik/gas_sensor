@@ -14,6 +14,7 @@ class gas_sensor {
     //virtual ~gas_sensor();
     rc_t gas_sensor_init();
     float gas_sensor_value_get(measure_gas_type_e gas_type);
+    sensor_mq_e sensor_type_get();
     
   private:
     sensor_mq_e sensor_type;

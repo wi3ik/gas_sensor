@@ -2,12 +2,7 @@
 
 #include  "Arduino.h"
 
-void validate_rc(rc_t rc, char *func_name) {
-  if (rc != RC_SUCCESS_E) {
-    Serial.printf("Failure at %s function, rc = %d [%s].", func_name, rc, rc2str(rc));
-    //assert(0);
-  }
-}
+
 
 
 char *rc2str(rc_t rc) {

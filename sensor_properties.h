@@ -44,6 +44,6 @@ typedef struct sensor_properties {
 rc_t sensor_properties_init(sensor_mq_e sensor_type, sensor_properties_t *prop_p);
 
 char *gas2str(measure_gas_type_e gas_type);
-
+char *sensor_type2str(sensor_mq_e sensort_type);
 
 #endif /* __SENSOR_PROPERTIES__ */

@@ -18,7 +18,8 @@
 */
 #define MQ_PIN A0
 #define OPERATIONAL_VOLTAGE (5.0)
-#define MAX_ADC_VALUE       (1024)    // == (1 << 10) - in this case 10 represents MAX number bits for ADC 
+#define ADC_MAX             (10)
+#define MAX_ADC_VALUE       (1 << ADC_MAX)    // MAX value for Analog -> Digital Convertor (ADC) 
 
 
 /* ========== ENUMs ============ */
@@ -35,7 +36,6 @@ typedef struct graph_dots {
 } graph_dots_t;
 
 /* ========== FUNCTIONs ============ */
-void validate_rc(rc_t rc, char *func_name);
 char *rc2str(rc_t rc);
 bool is_time_expired(float period, unsigned long &prev_time);
 
