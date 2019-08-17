@@ -2,11 +2,14 @@
 
 #include "Arduino.h" // probably can be removed later - for now it is required for debug
 
+gas_sensor::gas_sensor(sensor_mq_e sensor_type) {
+  this->sensor_type = sensor_type;
+}
 
-rc_t gas_sensor::gas_sensor_init(sensor_mq_e sensor_type) {
+rc_t gas_sensor::gas_sensor_init() {
   rc_t rc = RC_SUCCESS_E;
 
-  rc = sensor_properties_init(sensor_type, &this->params);
+  rc = sensor_properties_init(this->sensor_type, &this->params);
   validate_rc(rc, "sensor_properties_init");
 
   rc = this->gas_sensor_define_attr_value();

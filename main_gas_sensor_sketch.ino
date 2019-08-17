@@ -8,15 +8,15 @@ unsigned long prev_led_time = 0;
 bool led_state = LOW;
 
 
-gas_sensor mq; // create sensor object which will be accessible at every point
+gas_sensor mq(SENSOR_MQ4_E);     // create sensor object which will be accessible at every point
 
-
+// foo *boo = new foo(2);
 
 void setup() {
   Serial.begin(115200);
   pinMode(LED_BUILTIN, OUTPUT);
   
-  mq.gas_sensor_init(SENSOR_MQ4_E);
+  mq.gas_sensor_init();         // calculate all required sensor dependent parameters 
 }
 
 

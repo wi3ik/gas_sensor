@@ -6,15 +6,19 @@
 
 
 class gas_sensor {
+  private:
+    gas_sensor() {};  // empty constructor which is not allowed
+    
   public:
-    //gas_sensor();
+    gas_sensor(sensor_mq_e sensor_type);
     //virtual ~gas_sensor();
-    rc_t gas_sensor_init(sensor_mq_e sensor_type);
+    rc_t gas_sensor_init();
     float gas_sensor_value_get(measure_gas_type_e gas_type);
     
   private:
-
+    sensor_mq_e sensor_type;
     sensor_properties_t params;
+    
     float RO;
     float m[MEASURE_GAS_MAX_E + 1];  //per gas type // TODO - allocate correct memory based on value of supported gases + release in destructor
     float b[MEASURE_GAS_MAX_E + 1];
