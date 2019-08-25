@@ -45,6 +45,20 @@ rc_t sensor_properties_init(sensor_mq_e sensor_type, sensor_properties_t *prop_p
     10.0,                                                             // RL resistance value, kOhm
   };
 
+/*
+   CO, ppm  |    Symptoms
+   ---------------------------------------------------------------------------------------------------------------------------
+   50       | No adverse effects with 8 hours of exposure.
+   200      | Mild headache after 2-3 hours of exposure.
+   400      | Headache and nausea after 1-2 hours of exposure.
+   800      | Headache, nausea, and dizziness after 45 minutes; collapse and loss of consciousness after 1 hour of exposure.
+   1,000    | Loss of consciousness after 1 hour of exposure.
+   1,600    | Headache, nausea, and dizziness after 20 minutes of exposure.
+   3,200    | Headache, nausea, and dizziness after 5-10 minutes; collapse and loss of consciousness after 30 minutes of exposure.
+   6,400    | Headache and dizziness after 1-2 minutes; loss of consciousness and danger of death after 10-15 minutes of exposure.
+   12,800   | Immediate physiological effects, loss of consciousness and danger of death after 1-3 minutes of exposure
+*/
+
 
   switch (sensor_type) {
     
