@@ -26,7 +26,7 @@ class gas_sensor {
   
     rc_t gas_sensor_define_attr_value();
     
-    float gas_sensor_analog_value_get(int iterations = 200);
+    float gas_sensor_analog_value_get(int iterations = 500);
     float analog2volt(float analog_value);
     float sensor_rs_get(float volt);
     
